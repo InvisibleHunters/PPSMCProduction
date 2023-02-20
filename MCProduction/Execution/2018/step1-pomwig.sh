@@ -24,4 +24,4 @@ cd ../..
 EVENTS=100
 
 # cmsDriver command
-cmsDriver.py Configuration/GenProduction/python/pomwig-zee-fragment.py --python_filename Pomwig-Zee_cfg.py --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN --fileout file:PPS-RunIISummer20UL18GEN-00001.root --conditions 106X_upgrade2018_realistic_v4 --beamspot Realistic25ns13TeVEarly2018Collision --step GEN --geometry DB:Extended --filein file:PPS-RunIISummer20UL18GEN-00001_0.root --era Run2_2018 --no_exec --mc -n $EVENTS || exit $?;
+cmsDriver.py Configuration/GenProduction/python/pomwig-zee-fragment.py --python_filename Pomwig-Zee_cfg.py --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN --fileout file:PPS-RunIISummer20UL18GEN-00001.root --conditions 106X_upgrade2018_realistic_v4 --beamspot Realistic25ns13TeVEarly2018Collision --step GEN --geometry DB:Extended --era Run2_2018 --no_exec --mc -n $EVENTS || exit $?;
