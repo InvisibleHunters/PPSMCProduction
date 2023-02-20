@@ -8,7 +8,7 @@ For the crab jobs submission, the package [JobSubmitter](https://github.com/dfig
 Download the package from git. After running the script to set the environment, there are dedicated scripts for each production (from pythia, exhume, pomwig or directly from LHE files). 
 
 ```bash
-git clone https://github.com/dfigueiredo/PPSMCProduction
+git clone https://github.com/InvisibleHunters/PPSMCProduction.git
 cd PPSMCProduction
 source set_environment.sh
 PREPAREMCGENERATION2017 or PREPAREMCGENERATION2018 <enter> (only for the first time to create your working folder)
