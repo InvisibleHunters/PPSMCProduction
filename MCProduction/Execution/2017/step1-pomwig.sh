@@ -16,7 +16,7 @@ cd CMSSW_10_6_18/src
 eval `scram runtime -sh`
 
 # Download fragment from McM
-curl -s -k https://raw.githubusercontent.com/dfigueiredo/PPSMCProduction/master/MCProduction/Configuration/POMWIG_SingleDiffractiveMinusZee_M20_13TeV_cff.py --retry 3 --create-dirs -o Configuration/GenProduction/python/pomwig-zee-fragment.py
+curl -s -k https://raw.githubusercontent.com/InvisibleHunters/PPSMCProduction/master/MCProduction/Configuration/POMWIG_SingleDiffractiveMinusZee_M20_13TeV_cff.py --retry 3 --create-dirs -o Configuration/GenProduction/python/pomwig-zee-fragment.py
 [ -s Configuration/GenProduction/python/pomwig-zee-fragment.py ] || exit $?;
 scram b
 cd ../..
