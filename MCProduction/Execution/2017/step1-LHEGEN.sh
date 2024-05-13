@@ -18,7 +18,7 @@ eval `scram runtime -sh`
 # Download fragment from McM
 
 # Official CMS Producion
-curl -s -k https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_fragment/TOP-RunIISummer20UL17pLHEGEN-00002 --retry 3 --create-dirs -o Configuration/GenProduction/python/RunIISummer20UL17LHEGEN-fragment.py
+curl -s -k https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_fragment/TOP-RunIISummer20UL17pLHEGEN-00002 --retry 3 --create-dirs -o Configuration/GenProduction/python/RunIISummer20UL17LHEGEN-fragment.py
 
 # Customized Herwig Hadronization
 #curl -s -k https://raw.githubusercontent.com/InvisibleHunters/PPSMCProduction/master/MCProduction/Configuration/HERWIG_Hadronization_cff.py --retry 3 --create-dirs -o Configuration/GenProduction/python/RunIISummer20UL17LHEGEN-fragment.py

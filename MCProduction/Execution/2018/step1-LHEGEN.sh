@@ -19,7 +19,7 @@ eval `scram runtime -sh`
 # Official CMS Producion
 
 # Download fragment from McM
-curl -s -k https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_fragment/PPS-RunIISummer20UL18pLHEGEN-00001 --retry 3 --create-dirs -o Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py
+curl -s -k https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_fragment/PPS-RunIISummer20UL18pLHEGEN-00001 --retry 3 --create-dirs -o Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py
 [ -s Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py ] || exit $?;
 scram b
 cd ../..
