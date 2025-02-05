@@ -6,6 +6,11 @@ export X509_USER_PROXY=$(pwd)/voms_proxy.txt
 
 export SCRAM_ARCH=slc7_amd64_gcc700
 
+# LHESource bug fix provided by A. Bellora
+# https://github.com/AndreaBellora/cmssw/commit/20a4a6569cc52809a7a035ea33ac1382e0bf086a
+# Also discussed here:
+#     https://cms-talk.web.cern.ch/search?q=Every%20CRAB%20job%20runs%20with%20the%20same%20input%20event
+#     https://github.com/dmwm/CRABServer/issues/8904
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 if [ -r CMSSW_10_6_21/src ] ; then
   echo release CMSSW_10_6_21 already exists
