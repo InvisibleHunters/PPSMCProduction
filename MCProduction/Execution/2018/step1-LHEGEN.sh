@@ -13,8 +13,9 @@ else
   scram p CMSSW CMSSW_10_6_21
 fi
 cd CMSSW_10_6_21/src
+cmsenv
+git cms-merge-topic AndreaBellora:CMSSW_10_6_21_fixLHE
 eval `scram runtime -sh`
-
 
 # Official CMS Producion
 
