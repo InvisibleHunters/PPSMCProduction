@@ -54,6 +54,6 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
             'JetMatching:nQmatch = 5',         # Matching flavor scheme (5-flavor)
             'JetMatching:nJetMax = 4'          # Max number of partons in Born matrix element
         ),
-        parameterSets = cms.vstring('skip_hadronization','pythia8CommonSettingsBlock','pythia8CP5SettingsBlock','pythia8PSweightsSettingsBlock', 'lepton_in_jets', 'jet_matching')
+        parameterSets = cms.vstring('skip_hadronization','pythia8CommonSettings','pythia8CP5Settings','pythia8PSweightsSettings', 'lepton_in_jets', 'jet_matching')
     )
 )
