@@ -21,15 +21,22 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
         ),
         # Enable semi-leptonic decays for b- and c-hadrons
         lepton_in_jets = cms.vstring(
-            'Bottom:all = on',                # Enable all bottom quark decays
-            'Charm:all = on',                 # Enable all charm quark decays
+            '6:all = on',                # Enable all bottom quark decays
+            '-6:all = on',               # Enable all bottom quark decays
+            '4:all = on',                # Enable all charm quark decays
+            '-4:all = on',                # Enable all charm quark decays
             # Semi-leptonic decays for B-mesons (b-hadrons)
-            'B+:addChannel = 1.0 e+ nu_e D0',     
-            'B+:addChannel = 1.0 mu+ nu_mu D0',   
-            'B+:addChannel = 1.0 tau+ nu_tau D0',
+            #'B+:addChannel = 1.0 e+ nu_e D0'     
+            #'B+:addChannel = 1.0 mu+ nu_mu D0'   
+            #'B+:addChannel = 1.0 tau+ nu_tau D0'
+            '521:addChannel = 1 1.0 91 -11 12 421',
+            '521:addChannel = 1 1.0 91 -13 14 421',
+            '521:addChannel = 1 1.0 91 -15 16 421',
             # Semi-leptonic decays for D-mesons (c-hadrons)
-            'D+:addChannel = 1.0 e+ nu_e K-',     
-            'D+:addChannel = 1.0 mu+ nu_mu K-',
+            #'D+:addChannel = 1.0 e+ nu_e K-',     
+            #'D+:addChannel = 1.0 mu+ nu_mu K-',
+            '411:addChannel = 1 1.0 91 -11 12 -321',
+            '411:addChannel = 1 1.0 91 -13 14 -321',
             # General decay settings for detector acceptance
             'ParticleDecays:limitTau0 = on',      # Enable lifetime-based decays
             'ParticleDecays:tauMax = 10.0'        # Decay within ~10 mm of detector volume
