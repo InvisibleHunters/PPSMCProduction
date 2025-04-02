@@ -22,10 +22,14 @@ cmsenv
 git cms-merge-topic AndreaBellora:CMSSW_10_6_21_fixLHE
 eval `scram runtime -sh`
 
-# Official CMS Producion
+# Official CMS Production: Hadronization from CMS LPAIR
+#curl -s -k https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_fragment/PPS-RunIISummer20UL18pLHEGEN-00001 --retry 3 --create-dirs -o Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py
+#[ -s Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py ] || exit $?;
+#scram b
+#cd ../..
 
-# Download fragment from McM
-curl -s -k https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_fragment/PPS-RunIISummer20UL18pLHEGEN-00001 --retry 3 --create-dirs -o Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py
+#CP5 tune, Jet matching and forcing the semi-leptonic decays from the partons of the LHE file.
+curl -s -k https://raw.githubusercontent.com/InvisibleHunters/PPSMCProduction/refs/heads/master/MCProduction/Configuration/PYTHIA_Hadronization_Tune_SemiLeptonic_cff.py --retry 3 --create-dirs -o Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py
 [ -s Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py ] || exit $?;
 scram b
 cd ../..
