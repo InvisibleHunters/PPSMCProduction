@@ -11,7 +11,6 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
     comEnergy = cms.double(13000.0),  # LHC collision energy
     maxEventsToPrint = cms.untracked.int32(0),
     PythiaParameters = cms.PSet(
-        parameterSets = cms.vstring('skip_hadronization','pythia8CommonSettings','pythia8CP5Settings','pythia8PSweightsSettings', 'lepton_in_jets', 'jet_matching'), 
         pythia8CommonSettingsBlock,
         pythia8CP5SettingsBlock,
         pythia8PSweightsSettingsBlock,
@@ -47,6 +46,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
             'JetMatching:qCut = 20.',          # Merging scale (GeV)
             'JetMatching:nQmatch = 5',         # Matching flavor scheme (5-flavor)
             'JetMatching:nJetMax = 4'          # Max number of partons in Born matrix element
-        )
+        ),
+        parameterSets = cms.vstring('skip_hadronization','pythia8CommonSettingsBlock','pythia8CP5SettingsBlock','pythia8PSweightsSettingsBlock', 'lepton_in_jets', 'jet_matching')
     )
 )
