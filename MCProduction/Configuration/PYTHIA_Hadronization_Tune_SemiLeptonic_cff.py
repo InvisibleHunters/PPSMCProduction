@@ -8,52 +8,49 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
     pythiaPylistVerbosity = cms.untracked.int32(1),
     filterEfficiency = cms.untracked.double(1.0),
     pythiaHepMCVerbosity = cms.untracked.bool(False),
-    comEnergy = cms.double(13000.0),  # LHC collision energy
+    comEnergy = cms.double(13000.0),
     maxEventsToPrint = cms.untracked.int32(0),
     PythiaParameters = cms.PSet(
         pythia8CommonSettingsBlock,
         pythia8CP5SettingsBlock,
         pythia8PSweightsSettingsBlock,
-        # Skip hard process generation (use LHE input)
-        skip_hadronization = cms.vstring(
-            'ProcessLevel:all = off',  # Disable Pythia hard process generation
-            'Check:event = off'        # Skip event validation checks
+        lheInput = cms.vstring(
+            # Hard Process already defined in the LHE file from the Toy MC, hence no need to specify the hadronization of specific quarks.
+            #   pp -> pp X H -> bb
+            #   pp -> pp X H -> gamma gamma
+            # PYTHIA will not create more hard process
+            'ProcessLevel:all = off',
+            # PYTHIA does parton showering (already included by default, but forcing) 
+            'PartonLevel:all = on',
+            # PYTHIA does hadronization, fragmentation and decays (already included by default, but forcing)
+            'HadronLevel:all = on',
+            # Debugging.
+            # 'Check:event = off',
         ),
-        # Enable semi-leptonic decays for b- and c-hadrons
-        lepton_in_jets = cms.vstring(
-            '6:all = on',                # Enable all bottom quark decays
-            '-6:all = on',               # Enable all bottom quark decays
-            '4:all = on',                # Enable all charm quark decays
-            '-4:all = on',                # Enable all charm quark decays
-            # Semi-leptonic decays for B-mesons (b-hadrons)
-            #'B+:addChannel = 1.0 e+ nu_e D0'     
-            #'B+:addChannel = 1.0 mu+ nu_mu D0'   
-            #'B+:addChannel = 1.0 tau+ nu_tau D0'
-            '521:addChannel = 1 1.0 91 -11 12 421',
-            '521:addChannel = 1 1.0 91 -13 14 421',
-            '521:addChannel = 1 1.0 91 -15 16 421',
-            # Semi-leptonic decays for D-mesons (c-hadrons)
-            #'D+:addChannel = 1.0 e+ nu_e K-',     
-            #'D+:addChannel = 1.0 mu+ nu_mu K-',
-            '411:addChannel = 1 1.0 91 -11 12 -321',
-            '411:addChannel = 1 1.0 91 -13 14 -321',
-            # General decay settings for detector acceptance
-            'ParticleDecays:limitTau0 = on',      # Enable lifetime-based decays
-            'ParticleDecays:tauMax = 10.0'        # Decay within ~10 mm of detector volume
-        ),
-        # Jet matching parameters for LHE input consistency
-        jet_matching = cms.vstring(
+        jetMatching = cms.vstring(
+            # Matching useful for MadGraph/MadEvent
             'JetMatching:setMad = off',
             'JetMatching:scheme = 1',
             'JetMatching:merge = on',
+            # Jet algo used for the matching
             'JetMatching:jetAlgorithm = 2',
             'JetMatching:etaJetMax = 5.',
             'JetMatching:coneRadius = 1.',
             'JetMatching:slowJetPower = 1',
-            'JetMatching:qCut = 20.',          # Merging scale (GeV)
-            'JetMatching:nQmatch = 5',         # Matching flavor scheme (5-flavor)
-            'JetMatching:nJetMax = 4'          # Max number of partons in Born matrix element
+            # Matching scale in GeV.
+            # This must be consistent with the xqcut/qcut choice used
+            # when generating the LHE file.
+            'JetMatching:qCut = 20.',
+            # Matching flavour scheme.
+            # Use 5 for a five-flavour scheme, where b quarks are treated
+            # as matchable partons.
+            'JetMatching:nQmatch = 5',
+            # Maximum number of additional matrix-element partons.
+            # Use 4 for samples generated as H + 0,1,2,3,4 partons.
+            'JetMatching:nJetMax = 4',
+            # Common setting used in CMS MLM-matched Pythia8 fragments.
+            'JetMatching:doShowerKt = off'
         ),
-        parameterSets = cms.vstring('skip_hadronization','pythia8CommonSettings','pythia8CP5Settings','pythia8PSweightsSettings', 'lepton_in_jets', 'jet_matching')
+        parameterSets = cms.vstring('pythia8CommonSettings','pythia8CP5Settings','pythia8PSweightsSettings','lheInput','jetMatching')
     )
 )
