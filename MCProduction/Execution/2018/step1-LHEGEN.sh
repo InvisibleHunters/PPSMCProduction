@@ -28,8 +28,8 @@ eval `scram runtime -sh`
 #scram b
 #cd ../..
 
-#CP5 tune, Jet matching and forcing the semi-leptonic decays from the partons of the LHE file.
-curl -s -k https://raw.githubusercontent.com/InvisibleHunters/PPSMCProduction/refs/heads/master/MCProduction/Configuration/PYTHIA_Hadronization_Tune_SemiLeptonic_cff.py --retry 3 --create-dirs -o Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py
+#Forcing the semi-leptonic decays from the partons of the LHE file.
+curl -s -k https://raw.githubusercontent.com/InvisibleHunters/PPSMCProduction/refs/heads/master/MCProduction/Configuration/PYTHIA_Hadronization_exclusive.py --retry 3 --create-dirs -o Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py
 [ -s Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py ] || exit $?;
 scram b
 cd ../..
