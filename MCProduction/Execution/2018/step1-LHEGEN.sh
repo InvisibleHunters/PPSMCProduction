@@ -28,8 +28,8 @@ eval `scram runtime -sh`
 #scram b
 #cd ../..
 
-#Forcing the semi-leptonic decays from the partons of the LHE file.
-curl -s -k https://raw.githubusercontent.com/InvisibleHunters/PPSMCProduction/refs/heads/master/MCProduction/Configuration/PYTHIA_Hadronization_exclusive.py --retry 3 --create-dirs -o Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py
+#PPS X B-hadron production for b-quarks
+curl -s -k https://raw.githubusercontent.com/InvisibleHunters/PPSMCProduction/refs/heads/master/MCProduction/Configuration/PYTHIA_EXCLUSIVE_HADRONIZATION_PPSX.py --retry 3 --create-dirs -o Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py
 [ -s Configuration/GenProduction/python/PPS-RunIISummer20UL18pLHEGEN-00001-fragment.py ] || exit $?;
 scram b
 cd ../..

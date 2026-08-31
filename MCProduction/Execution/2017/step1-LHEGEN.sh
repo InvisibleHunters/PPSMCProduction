@@ -17,15 +17,17 @@ eval `scram runtime -sh`
 
 # Download fragment from McM
 
+# PPS X Including B-hadron for b jets
+curl -s -k https://raw.githubusercontent.com/InvisibleHunters/PPSMCProduction/refs/heads/master/MCProduction/Configuration/PYTHIA_EXCLUSIVE_HADRONIZATION_PPSX.py --retry 3 --create-dirs -o Configuration/GenProduction/python/RunIISummer20UL17LHEGEN-fragment.py
+
 # Official CMS Producion
-curl -s -k https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_fragment/TOP-RunIISummer20UL17pLHEGEN-00002 --retry 3 --create-dirs -o Configuration/GenProduction/python/RunIISummer20UL17LHEGEN-fragment.py
+#curl -s -k https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_fragment/TOP-RunIISummer20UL17pLHEGEN-00002 --retry 3 --create-dirs -o Configuration/GenProduction/python/RunIISummer20UL17LHEGEN-fragment.py
 
 # Customized Herwig Hadronization
 #curl -s -k https://raw.githubusercontent.com/InvisibleHunters/PPSMCProduction/master/MCProduction/Configuration/HERWIG_Hadronization_cff.py --retry 3 --create-dirs -o Configuration/GenProduction/python/RunIISummer20UL17LHEGEN-fragment.py
 
 # Customized Pythia Hadronization
 #curl -s -k https://raw.githubusercontent.com/InvisibleHunters/PPSMCProduction/master/MCProduction/Configuration/Pythia_Hadronization_cff.py --retry 3 --create-dirs -o Configuration/GenProduction/python/RunIISummer20UL17LHEGEN-fragment.py
-
 
 [ -s Configuration/GenProduction/python/RunIISummer20UL17LHEGEN-fragment.py ] || exit $?;
 scram b
