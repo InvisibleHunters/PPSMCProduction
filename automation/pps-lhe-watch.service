@@ -1,0 +1,19 @@
+[Unit]
+Description=PPS LHE to MiniAOD sequential production
+After=network-online.target
+Wants=network-online.target
+RequiresMountsFor=/storage/users /cvmfs/cms.cern.ch
+
+[Service]
+Type=simple
+User=dmf
+WorkingDirectory=/storage/users/dmf/pps-production/PPSMCProduction-master
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /storage/users/dmf/pps-production/PPSMCProduction-master/automation/pps_pipeline.py --config /storage/users/dmf/pps-production/config2018.json watch
+Restart=on-failure
+RestartSec=60
+TimeoutStopSec=60
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target

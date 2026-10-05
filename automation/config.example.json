@@ -1,0 +1,11 @@
+{
+  "year": 2018,
+  "events": -1,
+  "cmssw_root": "/storage/users/dmf/pps-production/cmssw",
+  "work_root": "/storage/users/dmf/pps-production/output2018",
+  "watch_dir": "/storage/users/dmf/pps-production/incoming2018",
+  "premix_list": "/storage/users/dmf/pps-production/premix2018.txt",
+  "proxy": "/storage/users/dmf/pps-production/proxy/x509up",
+  "launcher": ["/cvmfs/cms.cern.ch/common/cmssw-el7", "-B", "/storage", "--"],
+  "poll_seconds": 60
+}
